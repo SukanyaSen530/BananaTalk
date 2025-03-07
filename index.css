@@ -1,12 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap");
+
 body {
   box-sizing: border-box;
   background-color: rgb(218, 218, 101);
+  font-family: sans-serif;
 }
 
 .main-section {
-  display: flex;
-  flex-direction: column;
-  width: 400px;
+  width: 500px;
   margin: 50px auto;
   padding: 2rem;
   background: url(./images/m_bg.png);
@@ -16,41 +17,41 @@ body {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  text-align: center;
 }
 
-label,
 textarea {
   display: block;
   width: 100%;
   border-radius: 10px;
   margin: 10px 0;
   box-sizing: border-box;
-}
-
-textarea {
   padding: 10px;
-}
-
-label {
-  font-weight: 600;
+  height: 150px;
+  font-size: 20px;
 }
 
 .header_img {
-  height: 100px;
-  width: 100px;
+  height: 150px;
   border-radius: 5px;
-  margin: auto;
 }
 
 button {
   display: block;
-  width: 100%;
+  min-width: 100px;
   border-radius: 20px;
   padding: 0.5rem 0.5rem;
   border: none;
   transition: all 0.3s;
   background-color: rgb(61, 60, 60);
   color: white;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
 }
 
 button:hover {
@@ -58,8 +59,30 @@ button:hover {
   color: black;
 }
 
+button img {
+  height: 15px;
+}
+
 @media only screen and (max-width: 600px) {
   .main-section {
     width: 70%;
+    padding-bottom: 16px;
   }
+
+  .form-section {
+    flex-direction: column;
+  }
+}
+
+.form-section {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.translated-box {
+  font-family: "Syne Mono", monospace;
+  user-select: none;
+  pointer-events: none;
+  background-color: whitesmoke;
 }

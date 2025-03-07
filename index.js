@@ -1,7 +1,8 @@
-// alert("Working");
 const form = document.querySelector("#form");
 const output = document.querySelector("#output");
-let url = "https://api.funtranslations.com/translate/minion.json?";
+const copyButton = document.getElementById("copy-button");
+
+const url = "https://api.funtranslations.com/translate/minion.json?";
 
 function errorHandler(error) {
   alert("Sorry! Error :(, Try again later!");
@@ -23,4 +24,37 @@ form.addEventListener("submit", (evt) => {
         errorHandler(error);
       });
   });
+});
+
+// SW needs to be registered in all pages so better to keep in js file which is used everywhere
+if ("serviceWorker" in navigator) {
+  console.log("Service Worker Supported!"); // To check if browser supports it
+
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("./sw_cached_site.js")
+      .then((reg) => {
+        console.log("Service Worker Registered!");
+      })
+      .catch((err) => console.log(`Service Worker Error ${err}`));
+  });
+}
+
+copyButton.addEventListener("click", () => {
+  const textarea = document.querySelector(".translated-box");
+  const text = textarea?.value.trim();
+
+  if (!text) {
+    alert("No text to copy.");
+    return;
+  }
+
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      alert("Text copied!");
+    })
+    .catch((err) => {
+      console.error("Failed to copy: ", err);
+    });
 });
